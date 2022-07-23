@@ -47,3 +47,8 @@ class BooksCollector:
     # получаем список Избранных книг
     def get_list_of_favorites_books(self):
         return self.favorites
+
+collector = BooksCollector()
+collector.add_new_book('Гордость и предубеждение и зомби')
+collector.set_book_rating('Гордость и предубеждение и зомби', 0)
+print(collector.books_rating)

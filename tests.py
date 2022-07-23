@@ -1,7 +1,10 @@
 from main import BooksCollector
 
+
 # класс TestBooksCollector объединяет набор тестов, которыми мы покрываем наше приложение BooksCollector
 # обязательно указывать префикс Test
+
+
 class TestBooksCollector:
 
     # пример теста:
@@ -22,3 +25,21 @@ class TestBooksCollector:
 
     # напиши свои тесты ниже
     # чтобы тесты были независимыми в каждом из них создавай отдельный экземпляр класса BooksCollector()
+
+    def test_set_book_rating_0(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.set_book_rating('Гордость и предубеждение и зомби', 0)
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') != 0
+
+    def test_set_book_rating_12(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.set_book_rating('Гордость и предубеждение и зомби', 12)
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') != 12
+
+    def test_set_book_raiting_11(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.set_book_rating('Гордость и предубеждение и зомби', 11)
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') != 11
