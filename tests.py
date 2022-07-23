@@ -61,5 +61,25 @@ class TestBooksCollector:
     def test_get_books_with_specific_rating_1(self): # выводим список книг с определенным рейтингом
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
-        assert collector.get_books_with_specific_rating(1)
+        assert collector.get_books_with_specific_rating(1) == ['Гордость и предубеждение и зомби']
+
+    def test_add_book_in_favorites_books(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.add_book_in_favorites('Гордость и предубеждение и зомби')
+        assert 'Гордость и предубеждение и зомби' in collector.get_list_of_favorites_books()
+
+    def test_delete_book_from_favorites_books(self):
+        collector = BooksCollector()
+        collector.add_new_book('Гордость и предубеждение и зомби')
+        collector.add_book_in_favorites('Гордость и предубеждение и зомби')
+        collector.delete_book_from_favorites('Гордость и предубеждение и зомби')
+        assert 'Гордость и предубеждение и зомби' not in collector.get_list_of_favorites_books()
+
+    def test_get_books_rating_vocabulary(self):
+        collector = BooksCollector()
+        assert collector.get_books_rating() == collector.get_books_rating()
+
+
+
 
