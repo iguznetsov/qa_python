@@ -54,11 +54,11 @@ class TestBooksCollector:
         collector.add_new_book('Гордость и предубеждение и зомби')
         assert collector.get_book_rating('Гордость и предубеждение и зомби') == 1
 
-    def test_get_book_rating_withour_rating(self):#нет рейтинга у книги , которая еще не добавлена
+    def test_get_book_rating_withour_rating(self):  # нет рейтинга у книги , которая еще не добавлена
         collector = BooksCollector()
-        assert collector.get_book_rating('Гордость и предубеждение и зомби') is None
+        assert collector.get_book_rating('Гордость и предубеждение и зомби') == None
 
-    def test_get_books_with_specific_rating_1(self): # выводим список книг с определенным рейтингом
+    def test_get_books_with_specific_rating_1(self):  # выводим список книг с определенным рейтингом
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         assert collector.get_books_with_specific_rating(1) == ['Гордость и предубеждение и зомби']
@@ -76,10 +76,19 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('Гордость и предубеждение и зомби')
         assert 'Гордость и предубеждение и зомби' not in collector.get_list_of_favorites_books()
 
-    def test_get_books_rating_vocabulary(self):
+    def test_add_new_book_two_times_one_book(self):  # дважды одну книгу добавить нельзя
         collector = BooksCollector()
-        assert collector.get_books_rating() == collector.get_books_rating()
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        assert len(collector.get_books_rating()) == 1
 
+    def test_get_books_rating_vocabulary(self): # Проверка метода get_books_rating.
+        collector = BooksCollector()
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        assert collector.get_books_rating() == {'Что делать, если ваш кот хочет вас убить': 1}
 
-
-
+    def test_get_list_of_favorite_books_add_and_get(self): # получаем список Избранных книг
+        collector = BooksCollector()
+        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
+        collector.add_book_in_favorites('Что делать, если ваш кот хочет вас убить')
+        assert collector.get_list_of_favorites_books() == ['Что делать, если ваш кот хочет вас убить']
