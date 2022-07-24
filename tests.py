@@ -38,7 +38,7 @@ class TestBooksCollector:
         collector.set_book_rating('Гордость и предубеждение и зомби', 12)
         assert collector.get_book_rating('Гордость и предубеждение и зомби') != 12
 
-    def test_set_book_raiting_11(self):  # можно присваивать рейтинг меньше 10 и больше 1
+    def test_set_book_raiting_9(self):  # можно присваивать рейтинг меньше 10 и больше 1
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.set_book_rating('Гордость и предубеждение и зомби', 9)
@@ -63,13 +63,13 @@ class TestBooksCollector:
         collector.add_new_book('Гордость и предубеждение и зомби')
         assert collector.get_books_with_specific_rating(1) == ['Гордость и предубеждение и зомби']
 
-    def test_add_book_in_favorites_books(self):
+    def test_add_book_in_favorites_books(self): # проверка добавления книги в избранное
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_book_in_favorites('Гордость и предубеждение и зомби')
         assert 'Гордость и предубеждение и зомби' in collector.get_list_of_favorites_books()
 
-    def test_delete_book_from_favorites_books(self):
+    def test_delete_book_from_favorites_books(self): # проверяем удаления книги из ищбранных
         collector = BooksCollector()
         collector.add_new_book('Гордость и предубеждение и зомби')
         collector.add_book_in_favorites('Гордость и предубеждение и зомби')
